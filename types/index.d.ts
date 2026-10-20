@@ -8,16 +8,16 @@ declare type SearchParamProps = {
 // ========================================
 
 declare type SignUpParams = {
-  firstName: string;
-  lastName: string;
-  address1: string;
-  city: string;
-  state: string;
-  postalCode: string;
-  dateOfBirth: string;
-  ssn: string;
-  email: string;
-  password: string;
+  firstName?:  string;
+  lastName?:   string;
+  address?:    string;
+  city?:       string;
+  state?:        string;
+  postalCode?:   string;
+  dateOfBirth?:  string;
+  ssn?:        string;
+  email:        string;
+  password:       string;
 };
 
 declare type LoginUser = {
@@ -141,6 +141,7 @@ declare interface CreditCardProps {
   account: Account;
   userName: string;
   showBalance?: boolean;
+  currentBalance?: number;
 }
 
 declare interface BankInfoProps {
@@ -218,6 +219,7 @@ declare interface RightSidebarProps {
   user: User;
   transactions: Transaction[];
   banks: Bank[] & Account[];
+  totalCurrentBalance: number;
 }
 
 declare interface SiderbarProps {

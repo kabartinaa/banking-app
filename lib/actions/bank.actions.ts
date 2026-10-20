@@ -15,6 +15,24 @@ import { parseStringify } from "../utils";
 import { getTransactionsByBankId } from "./transaction.actions";
 import { getBanks, getBank } from "./user.actions";
 
+const getCurrentBalance = (balances: {
+  current?: number | null;
+  available?: number | null;
+}) => {
+  if (typeof balances.current === "number" && Number.isFinite(balances.current)) {
+    return balances.current;
+  }
+
+  if (
+    typeof balances.available === "number" &&
+    Number.isFinite(balances.available)
+  ) {
+    return balances.available;
+  }
+
+  return 0;
+};
+
 // Get multiple bank accounts
 export const getAccounts = async ({ userId }: getAccountsProps) => {
   try {
@@ -37,7 +55,7 @@ export const getAccounts = async ({ userId }: getAccountsProps) => {
         const account = {
           id: accountData.account_id,
           availableBalance: accountData.balances.available!,
-          currentBalance: accountData.balances.current!,
+          currentBalance: getCurrentBalance(accountData.balances),
           institutionId: institution.institution_id,
           name: accountData.name,
           officialName: accountData.official_name,
@@ -104,7 +122,7 @@ export const getAccount = async ({ appwriteItemId }: getAccountProps) => {
     const account = {
       id: accountData.account_id,
       availableBalance: accountData.balances.available!,
-      currentBalance: accountData.balances.current!,
+      currentBalance: getCurrentBalance(accountData.balances),
       institutionId: institution.institution_id,
       name: accountData.name,
       officialName: accountData.official_name,

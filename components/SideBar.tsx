@@ -5,6 +5,10 @@ import Link from 'next/link'
 import { cn } from '@/lib/utils'
 import { sidebarLinks } from '@/constants'
 import { usePathname } from 'next/navigation'
+import Footer from './Footer'
+
+
+
 const SideBar = ({user}:SiderbarProps) => {
     const pathname=usePathname();
   return (
@@ -60,7 +64,8 @@ const SideBar = ({user}:SiderbarProps) => {
 
         </nav>
 
-            FOOTER
+            <Footer user={user}/>
+
     </section>
   )
 }
