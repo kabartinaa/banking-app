@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import SideBar from "@/components/SideBar";
 import Image from "next/image";
 import MobileNavBar from "@/components/MobileNavBar";
