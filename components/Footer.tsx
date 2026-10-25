@@ -18,7 +18,7 @@ const Footer = ({user,type="desktop"}:FooterProps) => {
             {type==='mobile'?'footer_name-mobile':'footer_name'}
         >
            <p className="text-xl font-bold text-gray-700">
-                {user.name[0]}
+                {user.firstName[0]}
             </p>
         </div>
 
@@ -26,7 +26,7 @@ const Footer = ({user,type="desktop"}:FooterProps) => {
             {type==='mobile'?'email-mobile':'footer_email'}
         >
              <h1 className="text-14 truncate  text-gray-600 font-semibold">
-                {user.name}
+                {user.firstName}
             </h1>
             <p className="text-14 truncate font-normal text-gray-600">
                     {user.email}

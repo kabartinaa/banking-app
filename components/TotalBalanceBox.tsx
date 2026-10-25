@@ -24,6 +24,7 @@ const TotalBalanceBox = ({
 
                 <div className="total-balance-amount flex-center gap-2">
                     <AnimatedCounter 
+                    
                     amount={totalCurrentBalance}
                     />
                    

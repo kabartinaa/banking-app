@@ -55,7 +55,8 @@ export const getAccounts = async ({ userId }: getAccountsProps) => {
         const account = {
           id: accountData.account_id,
           availableBalance: accountData.balances.available!,
-          currentBalance: getCurrentBalance(accountData.balances),
+          // currentBalance: getCurrentBalance(accountData.balances),
+          currentBalance:accountData.balances.current!,
           institutionId: institution.institution_id,
           name: accountData.name,
           officialName: accountData.official_name,
@@ -63,7 +64,7 @@ export const getAccounts = async ({ userId }: getAccountsProps) => {
           type: accountData.type as string,
           subtype: accountData.subtype! as string,
           appwriteItemId: bank.$id,
-          sharaebleId: bank.shareableId,
+          shareableId: bank.shareableId,
         };
 
         return account;
@@ -117,7 +118,7 @@ export const getAccount = async ({ appwriteItemId }: getAccountProps) => {
 
     const transactions = await getTransactions({
       accessToken: bank?.accessToken,
-    });
+    }); 
 
     const account = {
       id: accountData.account_id,
@@ -170,6 +171,7 @@ export const getTransactions = async ({
 }: getTransactionsProps) => {
   let hasMore = true;
   let transactions: any = [];
+  
 
   try {
     // Iterate through each page of new transaction updates for item
@@ -195,9 +197,12 @@ export const getTransactions = async ({
 
       hasMore = data.has_more;
     }
+    console.log("getTransactions result:", transactions);
+    console.log("Is transactions an array:", Array.isArray(transactions));
 
     return parseStringify(transactions);
   } catch (error) {
     console.error("An error occurred while getting the accounts:", error);
   }
 };
+

@@ -54,7 +54,7 @@
   }
 
   .sheet-content button {
-    @apply focus:ring-0 focus-visible:ring-transparent focus:ring-offset-0 focus-visible:ring-offset-0 focus-visible:outline-none focus-visible:border-none !important;
+    @apply focus:ring-0 focus-visible:ring-transparent focus:ring-offset-0 focus-visible:ring-offset-0 focus-visible:outline-none focus-visible:border-none;
   }
 
   .text-14 {
@@ -84,7 +84,7 @@
   }
 
   .home-content {
-    @apply no-scrollbar flex w-full flex-1 flex-col gap-8 px-5 sm:px-8 py-7 lg:py-12 xl:max-h-screen xl:overflow-y-scroll;
+    @apply no-scrollbar flex min-w-0 w-full flex-1 flex-col gap-8 px-5 py-7 sm:px-8 lg:py-12 xl:max-h-screen xl:overflow-y-scroll;
   }
 
   .home-header {
@@ -134,14 +134,13 @@
   .recent-transactions-label {
     @apply text-20 md:text-24 font-semibold text-gray-900;
   }
-
   .recent-transactions-tablist {
-    @apply custom-scrollbar mb-8 flex w-full flex-nowrap;
+    @apply custom-scrollbar mb-4 flex h-auto w-full flex-nowrap justify-center bg-transparent;
   }
 
   /* Right sidebar */
   .right-sidebar {
-    @apply no-scrollbar hidden h-screen max-h-screen flex-col border-l border-gray-200 xl:flex w-[355px] xl:overflow-y-scroll !important;
+    @apply no-scrollbar hidden h-screen max-h-screen flex-col border-l border-gray-200 xl:flex w-[355px] xl:overflow-y-scroll;
   }
 
   .profile-banner {
@@ -220,8 +219,12 @@
   }
 
   /* Bank Info */
-  .bank-info {
+  /* .bank-info {
     @apply gap-[18px] flex p-4 transition-all border bg-blue-25 border-transparent;
+  } */
+
+  .bank-info {
+    @apply flex w-full items-center gap-[18px] p-4 transition-all border bg-blue-25 border-transparent;
   }
 
   /* Category Badge */
@@ -311,7 +314,7 @@
   }
 
   .payment-transfer_btn {
-    @apply text-14 w-full bg-bank-gradient font-semibold text-white shadow-form !important;
+    @apply text-14 w-full bg-bank-gradient font-semibold text-white shadow-form;
   }
 
   /* Root Layout */

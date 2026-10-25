@@ -1,23 +1,29 @@
 /* eslint-disable no-unused-vars */
 
-declare type SearchParamProps = {
-  params: { [key: string]: string };
-  searchParams: { [key: string]: string | string[] | undefined };
-};
+// declare type SearchParamProps = {
+//   params: { [key: string]: string };
+//   searchParams: { [key: string]: string | string[] | undefined };
+// };
 
+declare type SearchParamProps = {
+  params: Promise<{ [key: string]: string }>;
+  searchParams: Promise<{
+    [key: string]: string | string[] | undefined;
+  }>;
+};
 // ========================================
 
 declare type SignUpParams = {
-  firstName?:  string;
-  lastName?:   string;
-  address?:    string;
-  city?:       string;
-  state?:        string;
-  postalCode?:   string;
-  dateOfBirth?:  string;
-  ssn?:        string;
-  email:        string;
-  password:       string;
+  firstName: string;
+  lastName: string;
+  address1: string;
+  city: string;
+  state: string;
+  postalCode: string;
+  dateOfBirth: string;
+  ssn: string;
+  email: string;
+  password: string;
 };
 
 declare type LoginUser = {
@@ -325,7 +331,7 @@ declare interface getBanksProps {
 
 declare interface getBankProps {
   documentId: string;
-}
+}  
 
 declare interface getBankByAccountIdProps {
   accountId: string;

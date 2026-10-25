@@ -41,6 +41,11 @@ export async function createAdminClient() {
     .setProject(process.env.NEXT_PUBLIC_APPWRITE_PROJECT!)
     .setKey(process.env.NEXT_APPWRITE_KEY!);
 
+    console.log(
+      "Appwrite key loaded:",
+      !!process.env.NEXT_APPWRITE_KEY
+    );
+
   return {
 
     //Work with the current user's account

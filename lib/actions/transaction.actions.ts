@@ -9,6 +9,9 @@ const {
   APPWRITE_TRANSACTION_COLLECTION_ID: TRANSACTION_COLLECTION_ID,
 } = process.env;
 
+
+      // createTransaction() — Store a new transaction
+      // Purpose: Save a new money transfer record in your Appwrite database.
 export const createTransaction = async (transaction: CreateTransactionProps) => {
   try {
     const { database } = await createAdminClient();
@@ -30,6 +33,9 @@ export const createTransaction = async (transaction: CreateTransactionProps) => 
   }
 }
 
+
+    // getTransactionsByBankId() — Retrieve transactions for a bank
+    // Purpose: Find all recorded transfers where a particular bank is either the sender or the receiver.
 export const getTransactionsByBankId = async ({bankId}: getTransactionsByBankIdProps) => {
   try {
     const { database } = await createAdminClient();

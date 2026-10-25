@@ -2,18 +2,25 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import BankCard from './BankCard'
-const RightSidebar = ({ user, transactions, banks, totalCurrentBalance }:RightSidebarProps) => {
+import Category from './Category'
+
+import { countTransactionCategories } from '@/lib/utils'
+
+const RightSidebar = ({ user, banks, transactions,totalCurrentBalance }: RightSidebarProps) => {
+const categories: CategoryCount[] = countTransactionCategories(transactions);
+
+
   return (
     <aside className="right-sidebar">
        <section className="flex flex-col pb-8">
         <div className="profile-banner"/>
         <div className="profile">
             <div className="profile-img">
-                <span className="text-5xl font-bold text-black-500">{user.name[0]}</span>
+                <span className="text-5xl font-bold text-black-500">{user.firstName[0]}</span>
             </div>
 
             <div className="profile-details">
-                <h1 className="profile-name">{user.name}
+                <h1 className="profile-name">{user.firstName}
 
                 </h1>
                 <p className="profile-email">{user.email}</p>
@@ -47,8 +54,8 @@ const RightSidebar = ({ user, transactions, banks, totalCurrentBalance }:RightSi
                     <BankCard
                     key={banks[0].$id}
                     account={banks[0]}
-                    userName={user.name}
-                    showBalance={false}
+                    userName={`${user.firstName} ${user.lastName}`}
+                    showBalance={true}
                     currentBalance={totalCurrentBalance}
 
                     />
@@ -59,9 +66,10 @@ const RightSidebar = ({ user, transactions, banks, totalCurrentBalance }:RightSi
                         <BankCard
                          key={banks[1].$id}
                          account={banks[1]}
-                         userName={user.name}
+                         userName={`${user.firstName} ${user.lastName}`}
                          showBalance={false}
                          currentBalance={totalCurrentBalance}
+                         
                         />
                         
                     </div>
@@ -69,6 +77,19 @@ const RightSidebar = ({ user, transactions, banks, totalCurrentBalance }:RightSi
 
             </div>
         )}
+
+        <div className="mt-10 flex flex-1 flex-col">
+            <h2 className="header-2">
+                Top Categories
+
+            </h2>
+            <div className='space-y-5'>
+            {categories.map((category, index) => (
+              <Category key={category.name} category={category} />
+            ))}
+          </div>
+
+        </div>
 
        </section>
     </aside>

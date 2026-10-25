@@ -6,15 +6,19 @@ import React from 'react'
 ChartJS.register(ArcElement, Tooltip, Legend)
 
 const DoughNutChart = ({accounts}:DoughnutChartProps) => {
+
+    const accountNames=accounts.map((a)=>a.name)
+    const balances=accounts.map((a)=>a.currentBalance)
+
     const data ={
         datasets: [
             {
                 label:'Banks',
-                data:[243, 156, 12],
+                data:balances,
                 backgroundColor:['#0747b6' , '#2265d8' ,'#2f91fa']
              }
         ],
-        labels:['Bank A', 'Bank B', 'Bank C']
+        labels:accountNames
     }
   return (
     <Doughnut data={data}
